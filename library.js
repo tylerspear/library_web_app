@@ -8,6 +8,8 @@ const add = document.getElementById('add')
 const bookForm = document.getElementById('book-form')
 //confirmation button to add book
 const submitBook = document.getElementById('submit')
+//cancel button
+const cancel = document.getElementById('cancel')
 
 //Book object constructor
 function Book(title, author, pages) {
@@ -97,6 +99,13 @@ submitBook.addEventListener('click', (e)=> {
     document.getElementById('form-pages').value = ''
     document.getElementById('form-author').value = ''
     displayBooks(myLibrary)
+})
+
+cancel.addEventListener('click', ()=> {
+    bookForm.style.display = "none"
+    document.getElementById('form-title').value = ''
+    document.getElementById('form-pages').value = ''
+    document.getElementById('form-author').value = ''
 })
 
 
