@@ -39,9 +39,14 @@ function displayBooks(arr){
     bookList.innerHTML = ''
 
     //loop through obj array and create li for each element and append to ul
-    arr.forEach(book => {
+    arr.forEach((book,index) => {
         let li = document.createElement('li')
-        li.appendChild(document.createTextNode(`${book.title}`));
+        //set a data attr on the element that corresponds to the arr position
+        li.setAttribute('data-index', index)
+        li.innerHTML = `<span class="title">${book.title}</span>
+                        <span class="author">${book.author}</span>
+                        <button class="remove">Remove</button>`
+        // li.appendChild(document.createTextNode(`${book.title}`));
         bookList.appendChild(li)
     })
 }
@@ -55,5 +60,9 @@ add.addEventListener('click', ()=> {
 submitBook.addEventListener('click', (e)=> {
     e.preventDefault()
     addToLibrary()
+    bookForm.style.display = "none"
+    document.getElementById('form-title').value = ''
+    document.getElementById('form-pages').value = ''
+    document.getElementById('form-author').value = ''
     displayBooks(myLibrary)
 })
