@@ -48,9 +48,10 @@ function displayBooks(arr){
         //set a data attr on the element that corresponds to the arr position
         li.setAttribute('data-index', index)
         li.innerHTML = `<span class="title">${book.title}</span>
-                        <span class="author">${book.author}</span>
+                        <span class="author">By: ${book.author}</span>
+                        <button class="btn-read">Read?</button>
                         <button class="btn-remove">Remove</button>
-                        <button class="btn-read">Read?</button>`
+                        `
         bookList.appendChild(li)
     })
     //add event listener to the delete button to remove element if clicked
@@ -97,3 +98,12 @@ submitBook.addEventListener('click', (e)=> {
     document.getElementById('form-author').value = ''
     displayBooks(myLibrary)
 })
+
+
+//Adding some test books to update CSS
+const theHobbit = new Book('The Hobbit', 'JRR Tolkien', '377')
+const fotr = new Book('The Fellowship of the Ring', 'JRR Tolkien', '500')
+const twoTowers = new Book('The Two Towers', 'JRR Tolkien', '400')
+const rotk = new Book('The Return of the King', 'JRR Tolkien', '650')
+myLibrary.push(theHobbit, fotr, twoTowers, rotk)
+displayBooks(myLibrary)
