@@ -10,10 +10,11 @@ const bookForm = document.getElementById('book-form')
 const submitBook = document.getElementById('submit')
 
 //Book object constructor
-function Book(title, author, pages, read) {
+function Book(title, author, pages) {
     this.title = title
     this.author = author
     this.pages = pages
+    this.read = false
 
     this.info = function() {
         return(`${this.title}, by ${this.author} has ${this.pages} pages, this book ${read ? 'has been read' : 'has not been read'}`)
@@ -41,15 +42,45 @@ function displayBooks(arr){
     //loop through obj array and create li for each element and append to ul
     arr.forEach((book,index) => {
         let li = document.createElement('li')
+        if(book.read){
+            li.classList.add('read')
+        }
         //set a data attr on the element that corresponds to the arr position
         li.setAttribute('data-index', index)
         li.innerHTML = `<span class="title">${book.title}</span>
                         <span class="author">${book.author}</span>
-                        <button class="remove">Remove</button>`
-        // li.appendChild(document.createTextNode(`${book.title}`));
+                        <button class="btn-remove">Remove</button>
+                        <button class="btn-read">Read?</button>`
         bookList.appendChild(li)
     })
+    //add event listener to the delete button to remove element if clicked
+    deleteListener()
+    //add event listener for read buttons
+    readListener()
 }
+
+function deleteListener(){
+    const deleteBtns = document.querySelectorAll('.btn-remove')
+    for(let i=0; i<deleteBtns.length; i++){
+        deleteBtns[i].addEventListener('click', (e)=> {
+            const index = e.target.parentElement.dataset.index
+            myLibrary.splice(index, 1)
+            displayBooks(myLibrary)
+        })
+    }
+}
+
+function readListener(){
+    const readBtns = document.querySelectorAll('.btn-read')
+    for(let i=0; i<readBtns.length; i++){
+        readBtns[i].addEventListener('click', (e)=> {
+            e.target.parentElement.classList.add('read')
+            const index = e.target.parentElement.dataset.index
+            myLibrary[index].read = true
+        })
+    }
+}
+
 
 //on btn click, display the form
 add.addEventListener('click', ()=> {
