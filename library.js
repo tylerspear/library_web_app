@@ -77,7 +77,7 @@ function readListener(){
     const readBtns = document.querySelectorAll('.btn-read')
     for(let i=0; i<readBtns.length; i++){
         readBtns[i].addEventListener('click', (e)=> {
-            e.target.parentElement.classList.add('read')
+            e.target.parentElement.classList.toggle('read')
             const index = e.target.parentElement.dataset.index
             myLibrary[index].read = true
         })

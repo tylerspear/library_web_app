@@ -6,6 +6,12 @@ Layout
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #adb6c4;
+  color: #001b2e !important;
+  font-family: "Quicksand", sans-serif;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,7 +20,13 @@ Layout
 .header {
   text-align: center;
   margin-bottom: 2rem;
+  font-family: "Arvo", serif;
+  text-transform: uppercase;
+  margin-top: 2rem;
 }
+
+/* font-family: 'Arvo', serif;
+font-family: 'Quicksand', sans-serif; */
 
 /**********************
 Form 
@@ -31,7 +43,7 @@ Form
   transform: translate(-50%, -10%);
   border: 1px solid #000;
   padding: 5rem;
-  background-color: #fff;
+  background-color: #ffefd3;
   border-radius: 5px;
   max-width: 900px;
 }
@@ -71,8 +83,8 @@ Book List
   list-style: none;
   flex: 0 1 20%;
   margin: 1rem 2.5%;
-  border: 1px solid black;
-  background-color: burlywood;
+  border: 1px solid #001b2e;
+  background-color: #ffefd3;
   padding: 2rem 1rem;
   transition: all 0.3s ease;
 }
@@ -83,7 +95,7 @@ Book List
 }
 
 #book-list li:hover {
-  box-shadow: 10px 0px 3px 0px #000000;
+  box-shadow: 10px 0px 3px 0px #001b2e;
 }
 
 .title {
@@ -103,6 +115,10 @@ Book List
 .btn-read:hover,
 .btn-remove:hover {
   cursor: pointer;
+}
+
+.read {
+  border: 5px solid green !important;
 }
 
 /**********************
